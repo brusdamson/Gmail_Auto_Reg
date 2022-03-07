@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gmail_Auto_Reg
 {
-    internal interface IBotParams
+    internal interface IBotParams:ISavingFile
     {
         void SetParams(AutoRegerParams @params);
-        void SaveAccountsToTxt(string fileName);
-        void SaveAccountsToExcel(string fileName);
     }
 }
