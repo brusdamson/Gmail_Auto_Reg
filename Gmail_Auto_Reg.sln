@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gmail_Auto_Reg", "Gmail_Auto_Reg\Gmail_Auto_Reg.csproj", "{5ABED80E-8A50-4058-8F7D-75DF8E24FDC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gmail_Auto_Reg", "Gmail_Auto_Reg\Gmail_Auto_Reg.csproj", "{5ABED80E-8A50-4058-8F7D-75DF8E24FDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuCaptchaClient", "RuCaptchaClient\RuCaptchaClient.csproj", "{A870E524-350F-463B-9BDE-27281ED58DF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15EBC622-217C-40E6-9819-98853E4526E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{5ABED80E-8A50-4058-8F7D-75DF8E24FDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ABED80E-8A50-4058-8F7D-75DF8E24FDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ABED80E-8A50-4058-8F7D-75DF8E24FDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A870E524-350F-463B-9BDE-27281ED58DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A870E524-350F-463B-9BDE-27281ED58DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A870E524-350F-463B-9BDE-27281ED58DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A870E524-350F-463B-9BDE-27281ED58DF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
