@@ -18,8 +18,4 @@
     <ProjectReference Include="..\RuCaptchaClient\RuCaptchaClient.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ExcelMaster\" />
-  </ItemGroup>
-
 </Project>
