@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gmail_Auto_Reg
 {
-    internal interface ISavingFile
+    internal interface IExport
     {
         void SaveAccountsToTxt(string fileName);
         void SaveAccountsToExcel(string fileName);
