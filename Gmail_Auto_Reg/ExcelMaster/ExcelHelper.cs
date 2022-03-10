@@ -12,7 +12,7 @@ namespace Gmail_Auto_Reg.ExcelMaster
     {
         private bool disposedValue;
         private Application _excel;
-        private Workbook _workbook;
+        private Workbook _workBook;
 
         public ExcelHelper()
         {
@@ -43,7 +43,7 @@ namespace Gmail_Auto_Reg.ExcelMaster
             {
                 if (disposing)
                 {
-                    // TODO: освободить управляемое состояние (управляемые объекты)
+                    // TODO: освободить управляемое состояние (управляемые объекты) Так же, освободить ресурсы _workBook
                 }
 
                 // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения
@@ -61,7 +61,7 @@ namespace Gmail_Auto_Reg.ExcelMaster
 
         public void Dispose()
         {
-            // Не изменяйте этот код. Разместите код очистки в методе "Dispose(bool disposing)".
+            // Не изменяй этот код. Размести код очистки в методе "Dispose(bool disposing)".
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
