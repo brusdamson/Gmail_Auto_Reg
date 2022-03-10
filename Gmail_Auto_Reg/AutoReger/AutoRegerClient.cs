@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 
 namespace Gmail_Auto_Reg
 {
-    internal class AutoRegerClient : IBotParams
+    internal class AutoRegerClient : IBotParams, ISavingFile
     {
         private IWebDriver driver;
         private string RuCaptchaToken { get; set; }
@@ -24,8 +24,6 @@ namespace Gmail_Auto_Reg
             this.driver = driver;
             SetParams(@params);
         }
-
-        #region IBotParams implementation
         /// <summary>
         /// Сохраняет файл в формате .xls | .xlsx
         /// </summary>
@@ -46,6 +44,7 @@ namespace Gmail_Auto_Reg
             throw new NotImplementedException();
         }
 
+        #region IBotParams implementation
         /// <summary>
         /// Устанавливает конфигурацию
         /// </summary>

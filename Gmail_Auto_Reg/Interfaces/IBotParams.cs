@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gmail_Auto_Reg
 {
-    internal interface IBotParams:IExport
+    internal interface IBotParams
     {
         void SetParams(AutoRegerParams @params);
     }
