@@ -1,31 +1,32 @@
 ﻿using Gmail_Auto_Reg.ExcelMaster;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Gmail_Auto_Reg.Interfaces
 {
-    internal interface IExcelExport
+    internal interface IExcelExport:IDisposable
     {
         /// <summary>
-        /// Создание Excel файла
+        /// Открыие excel файла
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns>Полный путь к файлу</returns>
-        public string CreateExcelFile(string fileName);
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        internal bool Open(string filePath);
 
         /// <summary>
-        /// Создание наименование столбцов
+        /// Устанавливает в указанную ячейку указанные данные 
         /// </summary>
-        public void CreateNamedCells(IEnumerable<ExcelCells> cells);
+        /// <param name="column"></param>
+        /// <param name="row"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        internal bool Set(string column, int row, object data);
 
-        /// <summary>
-        /// Запись данных в указанную колонку (Последующие записи должны быть со сдвигом)
-        /// </summary>
-        /// <param name="columnId">Id колонки</param>
-        /// <param name="data">Данные для записи</param>
-        public void WriteDataToColumn(int columnId, string data);
+        internal void Save();
     }
 }

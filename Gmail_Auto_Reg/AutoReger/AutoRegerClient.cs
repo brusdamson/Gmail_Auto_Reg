@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gmail_Auto_Reg.ExcelMaster;
+using Gmail_Auto_Reg.Interfaces;
 using OpenQA.Selenium;
 
 namespace Gmail_Auto_Reg
 {
-    internal class AutoRegerClient:IBotParams
+    internal class AutoRegerClient : IBotParams
     {
         private IWebDriver driver;
         private string RuCaptchaToken { get; set; }
         private int CountOfAccounts { get; set; }
         private OutputType TypeOfOutput { get; set; }
 
+        private IExcelExport excelExport;
         
         public AutoRegerClient(IWebDriver driver, AutoRegerParams @params)
         {
+            this.excelExport = new ExcelHelper();
             this.driver = driver;
             SetParams(@params);
         }
