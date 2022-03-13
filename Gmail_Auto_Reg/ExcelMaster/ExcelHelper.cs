@@ -10,7 +10,6 @@ namespace Gmail_Auto_Reg.ExcelMaster
         private Workbook _workBook;
         private Worksheets _worksheets;
         private string _filepath;
-
         public ExcelHelper()
         {
             _excel = new Application();
@@ -68,7 +67,6 @@ namespace Gmail_Auto_Reg.ExcelMaster
             {
                 if (disposing)
                 {
-                    Dispose();
                     _workBook.Close(0);
                     _excel.Quit();
                 }
@@ -80,6 +78,7 @@ namespace Gmail_Auto_Reg.ExcelMaster
                 _workBook = null;
                 _filepath = null;
                 disposedValue = true;
+                
             }
         }
 

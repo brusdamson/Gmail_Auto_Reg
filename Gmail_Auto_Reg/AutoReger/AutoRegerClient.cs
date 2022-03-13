@@ -12,13 +12,18 @@ namespace Gmail_Auto_Reg
 {
     internal abstract class AutoRegerClient : IBotParams, ISavingFile
     {
-        private IWebDriver driver;
-        private string RuCaptchaToken { get; set; }
-        private int CountOfAccounts { get; set; }
-        private OutputType TypeOfOutput { get; set; }
-        private Account[] accounts;
+        #region configs
+        protected string RuCaptchaToken { get; set; }
+        protected int CountOfAccounts { get; set; }
+
+        protected Account[] accounts;
+        protected OutputType TypeOfOutput { get; set; }
+        #endregion
+        protected IWebDriver driver;
         private IExcelExport excelExport;
-        
+
+        protected const string MailRuUrl = "https://mail.ru/";
+
         public AutoRegerClient(IWebDriver driver, AutoRegerParams @params)
         {
             this.SetParams(@params);
