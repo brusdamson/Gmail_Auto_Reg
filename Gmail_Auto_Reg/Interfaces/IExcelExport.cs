@@ -9,10 +9,10 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Gmail_Auto_Reg.Interfaces
 {
-    internal interface IExcelExport:IDisposable
+    internal interface IExcelExport : IDisposable
     {
         /// <summary>
-        /// Открыие excel файла
+        /// Открытие excel файла
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>

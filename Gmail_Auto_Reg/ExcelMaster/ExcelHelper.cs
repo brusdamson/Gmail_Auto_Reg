@@ -1,10 +1,5 @@
 ﻿using Gmail_Auto_Reg.Interfaces;
 using Microsoft.Office.Interop.Excel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gmail_Auto_Reg.ExcelMaster
 {
@@ -13,6 +8,8 @@ namespace Gmail_Auto_Reg.ExcelMaster
         private bool disposedValue;
         private Application _excel;
         private Workbook _workBook;
+        private Worksheets _worksheets;
+        private string _filepath;
 
         public ExcelHelper()
         {
@@ -22,17 +19,45 @@ namespace Gmail_Auto_Reg.ExcelMaster
         #region IExcelExport implementation
         bool IExcelExport.Open(string filePath)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (File.Exists(filePath))
+                    _workBook = _excel.Workbooks.Open(filePath);
+                else
+                {
+                    _workBook = _excel.Workbooks.Add();
+                    _filepath = filePath;
+                }
+                return true;
+            }
+            catch (Exception ex) { 
+
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+      
         }
 
         bool IExcelExport.Set(string column, int row, object data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ((Worksheet)_excel.ActiveSheet).Cells[row, column] = data;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
 
         void IExcelExport.Save()
         {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(_filepath))
+                _workBook.SaveAs();
+            else
+                _workBook.Save();
         }
         #endregion
 
@@ -43,21 +68,27 @@ namespace Gmail_Auto_Reg.ExcelMaster
             {
                 if (disposing)
                 {
-                    // TODO: освободить управляемое состояние (управляемые объекты) Так же, освободить ресурсы _workBook
+                    Dispose();
+                    _workBook.Close(0);
+                    _excel.Quit();
                 }
 
                 // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения
                 // TODO: установить значение NULL для больших полей
+                _excel = null;
+                _worksheets = null;
+                _workBook = null;
+                _filepath = null;
                 disposedValue = true;
             }
         }
 
-        // // TODO: переопределить метод завершения, только если "Dispose(bool disposing)" содержит код для освобождения неуправляемых ресурсов
-        // ~ExcelHelper()
-        // {
-        //     // Не изменяй этот код. Размести код очистки в методе "Dispose(bool disposing)".
-        //     Dispose(disposing: false);
-        // }
+        // TODO: переопределить метод завершения, только если "Dispose(bool disposing)" содержит код для освобождения неуправляемых ресурсов
+        ~ExcelHelper()
+        {
+            // Не изменяй этот код. Размести код очистки в методе "Dispose(bool disposing)".
+            Dispose(disposing: false);
+        }
 
         public void Dispose()
         {
