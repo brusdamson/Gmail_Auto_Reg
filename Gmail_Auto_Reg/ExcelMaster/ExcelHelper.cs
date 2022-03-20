@@ -21,7 +21,9 @@ namespace Gmail_Auto_Reg.ExcelMaster
             try
             {
                 if (File.Exists(filePath))
-                    _workBook = _excel.Workbooks.Open(filePath);
+                    _workBook = _excel.Workbooks.Open(filePath, 0, true, 5, "", "",
+                true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "",
+                true, true, 0, true, true, false);
                 else
                 {
                     _workBook = _excel.Workbooks.Add();
@@ -37,11 +39,12 @@ namespace Gmail_Auto_Reg.ExcelMaster
       
         }
 
-        bool IExcelExport.Set(string column, int row, object data)
+        //TODO: stylization date, suggestion to the user to save(visible off)
+        bool IExcelExport.Set(string column, int row, object date)
         {
             try
             {
-                ((Worksheet)_excel.ActiveSheet).Cells[row, column] = data;
+                ((Worksheet)_excel.ActiveSheet).Cells[row, column] = date;
                 return true;
             }
             catch (Exception ex)
@@ -54,7 +57,10 @@ namespace Gmail_Auto_Reg.ExcelMaster
         void IExcelExport.Save()
         {
             if (!string.IsNullOrEmpty(_filepath))
-                _workBook.SaveAs();
+            {
+                _workBook.SaveAs(_filepath);
+                _filepath = null;
+            }
             else
                 _workBook.Save();
         }
@@ -69,16 +75,15 @@ namespace Gmail_Auto_Reg.ExcelMaster
                 {
                     _workBook.Close(0);
                     _excel.Quit();
+                    _excel = null;
+                    _filepath = null;
+                    _worksheets = null;
+                    _workBook = null;
+                     
                 }
-
                 // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения
                 // TODO: установить значение NULL для больших полей
-                _excel = null;
-                _worksheets = null;
-                _workBook = null;
-                _filepath = null;
                 disposedValue = true;
-                
             }
         }
 
